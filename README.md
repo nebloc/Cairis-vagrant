@@ -52,7 +52,7 @@ You can now exit the SSH, with
 $ exit
 ```
 ## Maintaining
-Web console can be accessed on [localhost:8080](localhost:8080)
+Web console can be accessed on [localhost:8080](http://localhost:8080)
 
 To see the logs from cairis, SSH in to the virtual machine and type:
 ```
