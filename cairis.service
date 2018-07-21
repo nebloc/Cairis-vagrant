@@ -1,0 +1,9 @@
+[Unit]
+Description=A cairis webserver
+
+[Service]
+User=vagrant
+WorkingDirectory=/home/vagrant/cairis/
+Environment="CAIRIS_CFG=/home/vagrant/cairis.cnf"
+Environment="PYTHONPATH=${PYTHONPATH}:/home/vagrant/cairis/"
+ExecStart=/home/vagrant/cairis/cairis/bin/cairisd.py runserver
