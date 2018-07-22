@@ -2,11 +2,11 @@
 Description=A cairis webserver
 
 [Service]
-User=vagrant
-WorkingDirectory=/home/vagrant/cairis/
-Environment="CAIRIS_CFG=/home/vagrant/cairis.cnf"
-Environment="PYTHONPATH=${PYTHONPATH}:/home/vagrant/cairis/"
-ExecStart=/home/vagrant/cairis/cairis/bin/cairisd.py runserver
+User=username # YOU NEED TO CHANGE THIS TO THE ONE USED IN VAGRANTFILE
+WorkingDirectory=/home/username/cairis/ # REPLACE USERNAME WITH ONE USED ABOVE
+Environment="CAIRIS_CFG=/home/username/cairis.cnf" # REPLACE USERNAME WITH ONE USED ABOVE
+Environment="PYTHONPATH=${PYTHONPATH}:/home/username/cairis/" # REPLACE USERNAME WITH ONE USED ABOVE
+ExecStart=/home/username/cairis/cairis/bin/cairisd.py runserver # REPLACE USERNAME WITH ONE USED ABOVE
 Restart=on-failure
 
 [Install]
