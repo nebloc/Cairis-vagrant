@@ -24,6 +24,9 @@ pip install -U wheel
 # Install cairis python dependencies
 pip install -r requirements.txt
 
+# Environment variables for cairis
+# export CAIRIS_CFG=/home/vagrant/cairis.cnf
+# export PYTHONPATH=${PYTHONPATH}:/home/vagrant/cairis/
 
 
 ##########
@@ -31,7 +34,8 @@ pip install -r requirements.txt
 ##########
 # Find out why pip install requirements is exiting...
 
-# Need to find a way to run ./setup.py programatically
+# Need to find a way to run ./quick_setup.py programatically
 # Can take from the docker examples if deciphered.
 
-# systemctl enable --now /etc/systemd/system/cairis.service
+systemctl enable /etc/systemd/system/cairis.service
+# systemctl start cairis.service
