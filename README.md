@@ -68,7 +68,7 @@ $ vagrant halt
 $ vagrant up        
 ```  
 ## Saving your progress
-Due to Cairis' ongoing development and instability, I recommend using 
+Due to Cairis' ongoing development and occasional instability, I recommend using 
 ```
 $ vagrant snapshot save name-of-save
 ```
