@@ -27,5 +27,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "./cairis.service", destination: "./cairis.service"
 
   # Start the provisioning script
-  config.vm.provision "shell", path: "./bootstrap.sh"
+  config.vm.provision "shell" do |s|
+    s.path = "./bootstrap.sh"
+  end
 end
