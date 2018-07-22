@@ -67,3 +67,13 @@ $ vagrant halt
 # Launch the VM and Cairis
 $ vagrant up        
 ```  
+## Saving your progress
+Due to Cairis' ongoing development and instability, I recommend using 
+```
+$ vagrant snapshot save name-of-save
+```
+Then using the export model function to save the 'model.xml'.
+If it fails, there is the option to roll back using the following command:
+```
+$ vagrant snapshot restore name-of-save --no-provision
+```
