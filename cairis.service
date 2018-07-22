@@ -7,3 +7,7 @@ WorkingDirectory=/home/vagrant/cairis/
 Environment="CAIRIS_CFG=/home/vagrant/cairis.cnf"
 Environment="PYTHONPATH=${PYTHONPATH}:/home/vagrant/cairis/"
 ExecStart=/home/vagrant/cairis/cairis/bin/cairisd.py runserver
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
