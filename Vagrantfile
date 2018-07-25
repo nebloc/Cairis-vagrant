@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
 
   # May switch this to a smaller footprint - should be a systemd though...
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "bento/ubuntu-16.04"
 
   # Forward the cairis web port to the localhost 8080
   config.vm.network "forwarded_port", guest: 7071, host: 8080, host_ip: "127.0.0.1"
