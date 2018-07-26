@@ -6,7 +6,7 @@ User=vagrant
 WorkingDirectory=/home/vagrant/cairis/
 Environment="CAIRIS_CFG=/home/vagrant/cairis.cnf"
 Environment="PYTHONPATH=${PYTHONPATH}:/home/vagrant/cairis/"
-ExecStart=/home/vagrant/cairis/cairis/bin/cairisd.py runserver
+ExecStart=/usr/local/bin/mod_wsgi-express start-server /home/vagrant/cairis/cairis/bin/cairis.wsgi
 Restart=on-failure
 
 [Install]

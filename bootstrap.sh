@@ -4,6 +4,7 @@ locale-gen en_GB.UTF-8
 # Update repo list
 apt update
 
+apt install apache2 apache2-dev -y
 # Copy the service file to the systemd directory
 mv ./cairis.service /etc/systemd/system/cairis.service
 
@@ -26,6 +27,7 @@ pip install -U setuptools
 pip install -U wheel
 # Install cairis python dependencies
 pip install -r requirements.txt
+pip install -r wsgi_requirements.txt
 
 # Environment variables for cairis
 export CAIRIS_CFG=/home/vagrant/cairis.cnf

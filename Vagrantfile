@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "nebloc/cairis"
 
   # Forward the cairis web port to the localhost 8080
-  config.vm.network "forwarded_port", guest: 7071, host: 8080, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", guest: 8000, host: 8080, host_ip: "127.0.0.1"
 
   # Virtualbox setting as 2GB ram for cairis to help installation. May be decreased after provision. 
   config.vm.provider "virtualbox" do |vb|
