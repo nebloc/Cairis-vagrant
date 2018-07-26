@@ -42,8 +42,7 @@ Username and password can be what you want. These are the credentials you will u
 
 After the setup has complete, run the following commnads:
 ```
-$ sudo systemctl enable /etc/systemd/system/cairis.service
-$ sudo systemctl start cairis.service
+$ sudo systemctl enable --now /etc/systemd/system/cairis.service
 ```
 These install the service unit and enable the service, so that when the VM is booted, it will start cairis by default.
 
