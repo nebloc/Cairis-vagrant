@@ -7,6 +7,16 @@ apt update
 # Copy the service file to the systemd directory
 mv ./cairis.service /etc/systemd/system/cairis.service
 
+# If using a bento/ubuntu box uncomment:
+# #Set root password for mysql database (default is root)
+#debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+#debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+
+# #Install cairis dependencies
+#apt-get install -y python-dev build-essential mysql-server mysql-client graphviz docbook dblatex python-pip python-numpy git libmysqlclient-dev --no-install-recommends texlive-latex-extra docbook-utils inkscape libxml2-dev libxslt1-dev poppler-utils python-setuptools
+
+
+
 # Clone the latest on the master branch
 git clone --depth 1 https://github.com/failys/cairis
 cd cairis
