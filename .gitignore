@@ -3,3 +3,4 @@
 account.json
 **/*.box
 **/*.iso
+**/*.vdi
