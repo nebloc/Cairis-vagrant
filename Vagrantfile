@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
 
   # Now using a box with packages pre-installed / configured.
-  # Switch to "bento/ubuntu-16.04" If you want to handle it yourself
+  # Switch to "bento/ubuntu-16.04" If you want to use a different provider
   config.vm.box = "nebloc/cairis"
 
   # Forward the cairis web port to the localhost 8080
