@@ -6,7 +6,7 @@ apt update
 
 apt install apache2 apache2-dev -y
 # Copy the service file to the systemd directory
-mv ./cairis.service /etc/systemd/system/cairis.service
+mv /tmp/cairis.service /etc/systemd/system/cairis.service
 
 # If using a bento/ubuntu box uncomment:
 # #Set root password for mysql database (default is root)
@@ -27,17 +27,16 @@ pip install -U setuptools
 pip install -U wheel
 # Install cairis python dependencies
 pip install -r requirements.txt
-pip install -r wsgi_requirements.txt
+#pip install -r wsgi_requirements.txt 
 
-# Environment variables for cairis
-export CAIRIS_CFG=/home/vagrant/cairis.cnf
-export PYTHONPATH=${PYTHONPATH}:/home/vagrant/cairis/
+# Run setup script as vagrant user, with cairis paths set, and passed init username/password
+# Overriding HOME variable as python getenv HOME returns roots home, despite sudo -u.
+sudo -u vagrant \
+    HOME=/home/vagrant \
+    CAIRIS_CFG=/home/vagrant/cairis.cnf \
+    PYTHONPATH=${PYTHONPATH}:/home/vagrant/cairis/ \
+    /home/vagrant/cairis/cairis/bin/quick_setup_headless.py --user $1 --password $2 --dbRootPassword root
 
-##########
-## TODO ##
-##########
 
-# Need to find a way to run ./quick_setup.py programatically
-# Can take from the docker examples if deciphered.
-
-# systemctl enable --now /etc/systemd/system/cairis.service
+systemctl enable /etc/systemd/system/cairis.service
+systemctl start cairis.service
