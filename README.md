@@ -26,33 +26,13 @@ Clone this repo, open the directory in a terminal and type
 ```
 $ vagrant up
 ```
-This should start virtual box and complete all the installation.
-After it has finished, access the virtual box with:
-```
-$ vagrant ssh
-```
-Navigate in to the cairis directory and run the setup
-```
-$ cd cairis
-$ ./quick_setup
-```
 
-The mysql root password is in the bootstrap file as root. 
-Username and password can be what you want. These are the credentials you will use to access the web console.
+Once finished, access cairis on localhost:port where port was specified in the conf.yaml file.
+The User credentials are whatever was specified in the yaml file at provisioning time.
 
-After the setup has complete, run the following commnads:
-```
-$ sudo systemctl enable --now /etc/systemd/system/cairis.service
-```
-These install the service unit and enable the service, so that when the VM is booted, it will start cairis by default.
+Multi_user specifies whether to run the cairis server with wsgi - Takes longer to provision as extra installations are needed.  
 
-You can now exit the SSH, with 
-```
-$ exit
-```
 ## Maintaining
-Web console can be accessed on [localhost:8080](http://localhost:8080)
-
 To see the logs from cairis, SSH in to the virtual machine and type:
 ```
 $ sudo journalctl -u cairis.service
