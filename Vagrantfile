@@ -1,10 +1,6 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
+require 'yaml'
+conf = YAML.load_file("conf.yaml")
 
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
@@ -25,12 +21,16 @@ Vagrant.configure("2") do |config|
   end
 
   # Copy the systemd service file to the local machine
-  config.vm.provision "file", source: "./cairis.service", destination: "/tmp/cairis.service"
-
+  if conf["multi_user"]
+    config.vm.provision "file", source: "./cairis_wsgi.service", destination: "/tmp/cairis.service"
+  else
+    config.vm.provision "file", source: "./cairis.service", destination: "/tmp/cairis.service"
+  end
+  
   # Start the provisioning script
   config.vm.provision "shell" do |s|
     s.path = "./bootstrap.sh"
     # Initial Username, Initial Password
-    s.args = ["test", "test"]
+    s.args = ["#{conf['username']}", "#{conf['password']}", "#{conf['multi_user']}"]
   end
 end
