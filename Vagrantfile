@@ -11,11 +11,11 @@ Vagrant.configure("2") do |config|
   # Switch to "bento/ubuntu-16.04" If you want to use a different provider
   config.vm.box = "nebloc/cairis"
 
-  # Forward the cairis web port to the localhost 8080
+  # Forward the cairis web port 
   if conf['multi_user']
-    config.vm.network "forwarded_port", guest: 8000, host: 8080, host_ip: "127.0.0.1"
+    config.vm.network "forwarded_port", guest: 8000, host: conf["port"], host_ip: "127.0.0.1"
   else
-    config.vm.network "forwarded_port", guest: 7071, host: 8080, host_ip: "127.0.0.1"
+    config.vm.network "forwarded_port", guest: 7071, host: conf["port"], host_ip: "127.0.0.1"
   end
 
   # Virtualbox setting as 2GB ram for cairis to help installation. May be decreased after provision. 
