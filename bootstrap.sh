@@ -1,10 +1,11 @@
 # Set the locale for ubuntu - python scripts fail without 
 locale-gen en_GB.UTF-8
 
-# Update repo list
-apt update
-
-apt install apache2 apache2-dev -y
+# If multi user 
+if [[ "$3" == "true" ]]; then
+    apt update
+    apt install apache2 apache2-dev -y
+fi
 # Copy the service file to the systemd directory
 mv /tmp/cairis.service /etc/systemd/system/cairis.service
 
@@ -26,8 +27,13 @@ cd cairis
 pip install -U setuptools
 pip install -U wheel
 # Install cairis python dependencies
+
 pip install -r requirements.txt
-#pip install -r wsgi_requirements.txt 
+
+# If multi user
+if [[ "$3" == "true" ]]; then
+    pip install -r wsgi_requirements.txt
+fi
 
 # Run setup script as vagrant user, with cairis paths set, and passed init username/password
 # Overriding HOME variable as python getenv HOME returns roots home, despite sudo -u.
@@ -38,5 +44,4 @@ sudo -u vagrant \
     /home/vagrant/cairis/cairis/bin/quick_setup_headless.py --user $1 --password $2 --dbRootPassword root
 
 
-systemctl enable /etc/systemd/system/cairis.service
-systemctl start cairis.service
+systemctl enable --now /etc/systemd/system/cairis.service
